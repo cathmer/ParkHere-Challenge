@@ -40,33 +40,34 @@ We would like you to use a drawing tool such as (https://www.draw.io) to illustr
 
 Now, we would like you to implement below endpoint from reservation-microservice:
 
-`url: POST 	/api/reservations`
+`url: POST 	/api/parking-lots/{parking-lot-id}}/reservations`
 
 ```
 ReservationRequest: {
     "user-id": "john@park-here.eu",
     "car-plate": "K-SC-124"
-    "start-timespan": "00: 00: 01",
-    "end-timespan": "12:00: 00",
+    "reserve-session": "morning",
     "reserve-date": "02-23-2022"
 }
 
 ReservationResponse: {
     "Status": 200,
+    "reservation-id": 123,
     "reserved-spot": "P12",
-    "reservation-id": 123
+    "reservation-date": "02-23-2022",
+    "reservation-startTime": "00:00:01",
+    "reservation-endTime": "11:59:59",
 }
 ```
 
-- The parking lot has 500 parking spots
-- Users should be able to reserve for an arbitrary timespan. 
-- Our system should decide which parking spot they get
+- Each parking lot has a maximum capacity defined within `configuration-microservice` 
+- Users should be able to reserve for either morning, evening or a full day. 
+- Our system should decide which parking spot they get and inform them if no spots are available
 - Multiple reservations for one user are possible
 - No two users can reserve the same spot for specific timespan
-- The reservation can be made for either half-day (morning or evening) or full-day
 
 ###Valid assumptions:
-
+- The user management operations are handled by `user-management-microservice`  but the implementation of this service is not part of this assignment
 - The user will be charged for his reservations based on a tariff defined within `tariff-microservice` 
 - the invoice is generated at the end of each month through `invoice-microservice` but the implementation of these services is not part of this assignment
 - The system uses different payment options implemented within `payment-microservice` but the implementation is not part of this assignment
