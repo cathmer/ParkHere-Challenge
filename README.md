@@ -3,7 +3,7 @@
 
 ParkHere code assignment
 LICENSE
-=============================
+
 Copyright (C) ParkHere GmbH - All Rights Reserved
 Unauthorized copying of any content of this project via any medium is strictly prohibited, Proprietary and confidential.
 
@@ -24,7 +24,6 @@ You are free to use any database, middleware (messaging platform, etc.) of your 
 
 
 ##Parking Reservation System
-##=============================
 
 The company decided to develop a product which allows users to reserve parking spots of a car park through our mobile app before they get there. Therefore, when they arrive, they would know exactly where to park. 
 
@@ -92,7 +91,6 @@ How would you scale your solution to fulfill this requirement?
 * Don't feel the need to over-engineer your solution. We don't expect you to build an entire system that can scale to billions of events. Your solution should be tailored to the problem statement.
 
 ##How to submit the solution
-##=============================
 
 As of now, you have given access to the private repository for this challenge. All you have to do is to clone this repository and create a branch with a meaningful name which will include your name as well.  Once you’re done with the implementation, kindly create a merge request and add our colleague who is currently in contact with you as the reviewer so he can review it and get back to you.
 
