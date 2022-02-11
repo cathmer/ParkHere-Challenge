@@ -25,16 +25,13 @@ You are also free to use any database, middleware (messaging platform, etc.) of 
 
 ##Parking Reservation System
 
-The company decided to develop a product which allows users to reserve parking spots of a car park through our mobile app before they get there. Therefore, when they arrive, they would know exactly where to park. 
+The company decided to develop a product which allows users to reserve parking spots of a car park through our mobile app before they get there. Therefore, when they arrive they would know exactly where to park. As we are using Microservices, we would like to have the solution to be built based on loosely coupled microservices which follows the general principles of highly demanded distributed systems such as scalability, availability and reliability.
 
-As we are using `Microservices`, we would like to have the solution to be built based on loosely coupled services and general attributes of distributed systems.
-We would like to run our business in many countries therefore, we would like to have the system to be scalable according to the demand. 
-
-We’re also concerned about the performance, and therefore we aim for `500ms` response time and also the availability of the system is important as our customers’ satisfaction is something very much valuable to us.
+We would like to run our business in many countries therefore, we would like to have the system to be scalable according to our customer demands. We’re also concerned about the performance and therefore we aim for 500ms response time from our reservation system.
 
 ##Part 1: System Design
 
-We would like you to use a drawing tool such as (https://www.draw.io) to illustrate your design in terms of microservices, their interaction styles, preferred databases and any other components you might have specified for your solution.
+We would like you to use a drawing tool such as (https://www.draw.io) to illustrate your design for the major components of such a system in terms of microservices, their interaction styles, preferred databases and any other components you might need for your solution. 
 
 ##Part2: Parking Reservation (coding)
 
@@ -57,7 +54,7 @@ ReservationResponse: {
     "reservation-date": "02-23-2022",
     "reservation-startTime": "00:00:01",
     "reservation-endTime": "11:59:59",
-    "amounts-to-pay": "11.30 €"
+    "amount-to-pay": "11.30 €"
 }
 ```
 
@@ -68,21 +65,24 @@ ReservationResponse: {
 - No two users can reserve the same spot for specific timespan
 
 ###Valid assumptions:
-- The user management operations are handled by `user-management-microservice`  but the implementation of this service is not part of this assignment
+Below microservices are provided to you as an option to you, so you may use any of them within your solution if you need them without thinking about their implementations; however, you would need to specify the operations’ signature for that particular microservice if you decided to use it in your solution without implementing those operations.
+
+- The user management operations are handled by `user-management-microservice`  
 - The user will be charged for his reservations based on a tariff defined within `tariff-microservice` 
-- the invoice is generated at the end of each month through `invoice-microservice` but the implementation of these services is not part of this assignment
-- The system uses different payment options implemented within `payment-microservice` but the implementation is not part of this assignment
-- The information about parking lot such as its capacity, location, number of floors, sectors and etc. are all defined within `configuration-microservice` but the implementation is not part of this assignment
+- the invoice is generated at the end of each month through `invoice-microservice` 
+- The system uses different payment options implemented within `payment-microservice` 
+- The information about parking lot such as its capacity, location and etc. are all defined within `configuration-microservice` 
 - For simplicity, all parking spots would be considered to be the same for all sort of cars
 - No security mechanism (`authentication` and `authorization`) would be needed for this code assignment
 - Entities can be created with minimum required properties
-- Analytical reports are provided to the managers by `analytics-microservice` but the implementation is not part of this assignment
+- Analytical reports are provided to the managers by `analytics-microservice` 
 
 ##Part3: Roll out events (Design only)
 
-The business has gone extremely wide, and now we want to roll out our app to 5000 new users. There is one condition: The operator of parking slot wants us every Thursday at 6pm to “unlock” the next week. This will lead to a huge traffic spike on Thursday evening since users want to make reservations for the next week. 
+The business has gone extremely wide and now we want to roll out our app to 5000 new users. There is one condition: The operator of the parking lot wants us every Thursday at 6pm to “open” the reservation for the next week. This will lead to a huge traffic spike on Thursday evening since users want to book their reservations for the next week in advance. 
 
-Our assumption is that every user will create 3 reservations. So, we expect more than 15000 requests for reservations within a couple of seconds. The operation of creating a reservation currently takes 500ms to be completed.
+Our assumption is that every user will create at least 10 reservations for a week. So, we expect to receive more than 50000 requests for reservations within a couple of minutes. Currently, the operation of creating a reservation takes 500ms.
+
 
 How would you scale your solution to fulfill this requirement? 
 #### No coding is required for this part, but you may use the drawing tool to elaborate your approach
@@ -90,6 +90,7 @@ How would you scale your solution to fulfill this requirement?
 ## Tips ##
 
 * We value writing clean codes. Your code will be reviewed by our developers, so make sure it is easy to follow and well-structured.
+
 * Don't feel the need to over-engineer your solution. We don't expect you to build an entire system that can scale to billions of events. Your solution should be tailored to the problem statement.
 
 ##How to submit the solution
