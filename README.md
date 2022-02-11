@@ -65,7 +65,7 @@ ReservationResponse: {
 - No two users can reserve the same spot for specific timespan
 
 ###Valid assumptions:
-Below microservices are provided to you as an option to you, so you may use any of them within your solution if you need them without thinking about their implementations; however, you would need to specify the operations’ signature for that particular microservice if you decided to use it in your solution without implementing those operations.
+Below microservices are provided to you as an option, so you may use any of them within your solution if you feel you need them without thinking about their implementations; however, you would need to specify the operations’ signature for that particular microservice if you decided to use it in your solution without implementing those operations so we would know what would you expect from that microservice in order serve your purpose.
 
 - The user management operations are handled by `user-management-microservice`  
 - The user will be charged for his reservations based on a tariff defined within `tariff-microservice` 
