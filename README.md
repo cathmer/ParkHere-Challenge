@@ -70,7 +70,7 @@ Below microservices are provided to you as an option, so you may use any of them
 - The user management operations are handled by `user-management-microservice`  
 - The user will be charged for his reservations based on a tariff defined within `tariff-microservice` 
 - the invoice is generated at the end of each month through `invoice-microservice` 
-- The system uses different payment options implemented within `payment-microservice` 
+- The system uses different payment options implemented within `payment-microservice` The payment-microservice will initiate the payment process whenever it realizes that there has been a new reservation in the system.
 - The information about parking lot such as its capacity, location and etc. are all defined within `configuration-microservice` 
 - For simplicity, all parking spots would be considered to be the same for all sort of cars
 - No security mechanism (`authentication` and `authorization`) would be needed for this code assignment
