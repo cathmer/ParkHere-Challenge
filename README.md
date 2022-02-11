@@ -75,7 +75,7 @@ Below microservices are provided to you as an option to you, so you may use any 
 - For simplicity, all parking spots would be considered to be the same for all sort of cars
 - No security mechanism (`authentication` and `authorization`) would be needed for this code assignment
 - Entities can be created with minimum required properties
-- Analytical reports are provided to the managers by `analytics-microservice` 
+
 
 ##Part3: Roll out events (Design only)
 
