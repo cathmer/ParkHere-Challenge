@@ -17,10 +17,10 @@ Please read the whole description thoroughly then create a program to solve the 
 For the solution, we request that you use Java 11+ or Kotlin as a programming language. The application must run and your solution should provide sufficient evidence that it is complete.
 
 ###Note1: 
-Using any application frameworks such as Spring Boot or DropWizard is totally optional and up to you however developing the solution with AWS Serverless solution will be an extra advantage for you.
+Feel free to use any application frameworks such as Spring Boot or DropWizard for your implementation, however developing the solution with AWS lambda functions will be considered as an extra advantage for you.
 
 ###Note2: 
-You are free to use any database, middleware (messaging platform, etc.) of your choice
+You are also free to use any database, middleware (messaging platform, etc.) of your choice which suits best for your application according to the given requirements.
 
 
 ##Parking Reservation System
@@ -57,6 +57,7 @@ ReservationResponse: {
     "reservation-date": "02-23-2022",
     "reservation-startTime": "00:00:01",
     "reservation-endTime": "11:59:59",
+    "amounts-to-pay": "11.30 €"
 }
 ```
 
