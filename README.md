@@ -29,63 +29,60 @@ The company decided to develop a product which allows users to reserve parking s
 
 We would like to run our business in many countries therefore, we would like to have the system to be scalable according to our customer demands. We’re also concerned about the performance and therefore we aim for 500ms response time from our reservation system.
 
-##Part 1: System Design
+##Part1: Parking Reservation (coding)
 
-We would like you to use a drawing tool such as (https://www.draw.io) to illustrate your design for the major components of such a system in terms of microservices, their interaction styles, preferred databases and any other components you might need for your solution. 
+You have available configuration location that gives you a list of parking spots in a given parking lot. 
+`url: GET /api/parking-lots/{parking-lot-id}`
+```
+Response: [
+    {
+        id: 1,
+        spotName: "spot1",
+        priority: 1
+    },
+    ...
+]
+```
 
-##Part2: Parking Reservation (coding)
 
-Now, we would like you to implement below endpoint from reservation-microservice:
+Now, we would like you to implement below endpoint to create reservation in the given parking lot:
 
-`url: POST 	/api/parking-lots/{parking-lot-id}}/reservations`
+`url: POST 	/api/parking-lots/{parking-lot-id}/reservations`
 
 ```
 ReservationRequest: {
     "user-id": "john@park-here.eu",
-    "car-plate": "K-SC-124"
-    "reserve-session": "morning",
-    "reserve-date": "02-23-2022"
+    "startTimestamp": 1737586800000,
+    "endTimestamp": 1737627502000
 }
 
 ReservationResponse: {
-    "Status": 200,
-    "reservation-id": 123,
-    "reserved-spot": "P12",
-    "reservation-date": "02-23-2022",
-    "reservation-startTime": "00:00:01",
-    "reservation-endTime": "11:59:59",
-    "amount-to-pay": "11.30 €"
+    "id": 123,
+    "spotId": 1,
+    "startTimestamp": 1737586800000,
+    "endTimestamp": 1737627502000,
 }
 ```
-
-- Each parking lot has a maximum capacity defined within `configuration-microservice` 
-- Users should be able to reserve for either morning, evening or a full day. 
-- Our system should decide which parking spot they get and inform them if no spots are available
-- Multiple reservations for one user are possible
+- Reservation should be stored permanently. ()
+- Users should be able to reserve for any time frame with given `startTimestamp` less than `endTimestamp`. 
+- When making reservation user should be given the spot with highest priority or be informed if no spots are available
+- Multiple reservations for one user are possible unless the time frames overlap
 - No two users can reserve the same spot for specific timespan
 
 ###Valid assumptions:
 Below microservices are provided to you as an option, so you may use any of them within your solution if you feel you need them without thinking about their implementations; however, you would need to specify the operations’ signature for that particular microservice if you decided to use it in your solution without implementing those operations so we would know what would you expect from that microservice in order serve your purpose.
 
-- The user management operations are handled by `user-management-microservice`  
-- The user will be charged for his reservations based on a tariff defined within `tariff-microservice` 
-- the invoice is generated at the end of each month through `invoice-microservice` 
-- The system uses different payment options implemented within `payment-microservice` The payment-microservice will initiate the payment process whenever it realizes that there has been a new reservation in the system.
+
 - The information about parking lot such as its capacity, location and etc. are all defined within `configuration-microservice` 
-- For simplicity, all parking spots would be considered to be the same for all sort of cars
 - No security mechanism (`authentication` and `authorization`) would be needed for this code assignment
 - Entities can be created with minimum required properties
 
+##Part 1: System Design
 
-##Part3: Roll out events (Design only)
+We would like you to use a drawing tool such as (https://www.draw.io) to illustrate your design for the major components of such a system in terms of microservices, their interaction styles, preferred databases and any other components you might need for your solution. 
 
-The business has gone extremely wide and now we want to roll out our app to 5000 new users. There is one condition: The operator of the parking lot wants us every Thursday at 6pm to “open” the reservation for the next week. This will lead to a huge traffic spike on Thursday evening since users want to book their reservations for the next week in advance. 
+##Part3: Deployment (Optional - Bonus)
 
-Our assumption is that every user will create at least 10 reservations for a week. So, we expect to receive more than 50000 requests for reservations within a couple of minutes. Currently, the operation of creating a reservation takes 500ms.
-
-
-How would you scale your solution to fulfill this requirement? 
-#### No coding is required for this part, but you may use the drawing tool to elaborate your approach
 
 ## Tips ##
 
