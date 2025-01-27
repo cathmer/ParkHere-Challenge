@@ -108,7 +108,10 @@ At ParkHere, we use Terraform.
 
 ## How to submit the solution
 
-As of now, you have received access to the private repository for this challenge. All you have to do is to clone this repository and create a branch. Please include your name in the branch name.  Once you’re done with the implementation, kindly create a merge request and add our colleague who is currently in contact with you as the reviewer so he can review it and get back to you.
+As of now, you have given access to the private repository for this challenge.
+All you have to do is to fork this repository to a new private repository in the git provider of your choice.
+
+Once you’re done with the implementation, kindly invite our colleague to review your solution.
 
 Please make sure you include a high quality image of your drawing within the solution or provide a link if you’re using an online tool.
 
