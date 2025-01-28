@@ -111,7 +111,11 @@ At ParkHere, we use Terraform.
 As of now, you have given access to the private repository for this challenge.
 All you have to do is to fork this repository to a new private repository in the git provider of your choice.
 
-Once you’re done with the implementation, kindly invite our colleague to review your solution.
+Once you’re done with the implementation, kindly invite our colleagues to review your solution.
+
+* andac.kurun@park-here.eu
+* jakob.mezger@park-here.eu
+* mirzet.brkic@park-here.eu
 
 Please make sure you include a high quality image of your drawing within the solution or provide a link if you’re using an online tool.
 
