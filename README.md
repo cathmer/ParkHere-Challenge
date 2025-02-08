@@ -31,7 +31,9 @@ We would like to run our business in many countries - therefore, the system shou
 
 ## Part 1: Parking Reservation (coding)
 
-You have access to the `configuration-microservice` which gives you a list of parking spots in a given parking lot. 
+The system is comprised of different services.
+
+1. a `configuration-microservice` give you access to a list of parking spots in a given lot.
 
 The service endpoint is `GET /api/parking-lots/{parking-lot-id}` and will return a list of available parking spots for a given location as below:
 
@@ -46,10 +48,11 @@ The service endpoint is `GET /api/parking-lots/{parking-lot-id}` and will return
 ]
 ```
 
-You can find a json file attached to use as example.
+You can find a json file attached to use as a response example.
 
-Now, we would like you to implement the endpoint below to create reservations in the given parking lot based on the list above.
+2. a `reservation-service` creates reservations in the a parking lot based on the list received.
 
+You must implement the service exposing the `POST` request described below.
 
 `POST 	/api/parking-lots/{parking-lot-id}/reservations`
 
@@ -72,9 +75,9 @@ The reservation service must meet the following requirements:
 
 - Reservations should be stored permanently.
 - Users should be able to reserve for any time frame with given `startTimestamp` less than `endTimestamp`. 
-- When making a reservation, the user should be given the spot with the highest priority, or informed if no spots are available
 - Multiple reservations for one user are possible unless the time frames overlap
 - No two users can reserve the same spot for overlapping timespans
+- When making a reservation, the user should be given the spot with the highest priority, or informed if no spots are available
 
 ### Valid assumptions:
 
@@ -119,7 +122,6 @@ Once you’re done with the implementation, kindly invite our colleagues to revi
 * massimiliano.gerardi@park-here.eu
 
 Please make sure you include a high quality image of your drawing within the solution or provide a link if you’re using an online tool.
-
 
 Good luck!  
 ParkHere Dev Team
