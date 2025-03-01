@@ -1,5 +1,39 @@
-# Reservation Code Challenge
+# Author's notes
 
+To run the system, first create the `reservation-service` generated jOOQ files:
+
+```bash
+cd reservation-service
+.gradlew :generateJooq
+cd ..
+```
+
+Then run the following command to start the system:
+```bash
+docker compose up
+```
+
+You can then make reservations at `localhost:8081` as follows:
+```bash
+curl -X POST "http://localhost:8081/api/parking-lots/1/reservations" \
+-H "Content-Type: application/json" \
+-d '{
+    "user-id": "john@park-here.eu",
+    "startTimestamp": 1737586800000,
+    "endTimestamp": 1737627502000
+}'
+```
+
+The `configuration-microservice` has loaded 2 parking lots with ids 1 and 2. 
+The lots can be found in the environment variables in the `docker-compose.yml` file (base64-encoded).
+
+## Proposed architecture
+
+Below is an image of a possible architecture for the system:
+
+![Parkhere Architecture](./parkhere_architecture.png)
+
+# Reservation Code Challenge
 
 ParkHere code assignment
 LICENSE
@@ -11,15 +45,15 @@ Introduction
 =============================
 Hello and welcome!
 
-As part of our interview process, we would like you to complete a programming assignment. It presents a hypothetical situation which resembles how you could be solving problems at ParkHere. 
+As part of our interview process, we would like you to complete a programming assignment. It presents a hypothetical situation which resembles how you could be solving problems at ParkHere.
 
 Please read the whole description thoroughly, then create a program to solve the problem at hand.
 Please use Java 11+ or Kotlin for your implementation. The application must run and your solution should provide sufficient evidence that it is complete.
 
-### Note 1: 
+### Note 1:
 Feel free to use any application frameworks such as Spring Boot or DropWizard for your implementation, however developing the solution with AWS lambda functions will be considered as an extra advantage for you.
 
-### Note 2: 
+### Note 2:
 You are also free to use any database, middleware (messaging platform, etc.) of your choice which suits best for your application according to the given requirements.
 
 
@@ -74,7 +108,7 @@ ReservationResponse: {
 The reservation service must meet the following requirements:
 
 - Reservations should be stored permanently.
-- Users should be able to reserve for any time frame with given `startTimestamp` less than `endTimestamp`. 
+- Users should be able to reserve for any time frame with given `startTimestamp` less than `endTimestamp`.
 - Multiple reservations for one user are possible unless the time frames overlap
 - No two users can reserve the same spot for overlapping timespans
 - When making a reservation, the user should be given the spot with the highest priority, or informed if no spots are available
@@ -86,13 +120,13 @@ The below microservices are provided to you as an option, so you may use any of 
 However, you do need to specify the operations’ signature for that particular microservice if you decided to use it in your solution so we would know what would you expect from that microservice in order to solve the task at hand.
 
 
-- The information about parking lot such as its capacity, location and etc. are all defined within `configuration-microservice` 
+- The information about parking lot such as its capacity, location and etc. are all defined within `configuration-microservice`
 - No security mechanism (`authentication` and `authorization`) would be needed for this code assignment
 - Entities can be created with minimum required properties
 
 ## Part 2: System Design
 
-We would like you to use a drawing tool such as https://www.draw.io to illustrate your design for the major components of such a system in terms of microservices, their interaction styles, preferred databases and any other components you might need for your solution. 
+We would like you to use a drawing tool such as https://www.draw.io to illustrate your design for the major components of such a system in terms of microservices, their interaction styles, preferred databases and any other components you might need for your solution.
 
 ## Part 3: Deployment (Optional - Bonus)
 
@@ -100,7 +134,7 @@ As a bonus, we would like you to describe a deployment plan for you solution, le
 
 AWS is preferred, but other providers are acceptable.
 
-At ParkHere, we use Terraform. 
+At ParkHere, we use Terraform.
 
 
 ## Tips ##
